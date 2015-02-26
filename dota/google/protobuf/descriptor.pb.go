@@ -2,38 +2,15 @@
 // source: descriptor.proto
 // DO NOT EDIT!
 
-/*
-Package google_protobuf is a generated protocol buffer package.
-
-It is generated from these files:
-	descriptor.proto
-
-It has these top-level messages:
-	FileDescriptorSet
-	FileDescriptorProto
-	DescriptorProto
-	FieldDescriptorProto
-	EnumDescriptorProto
-	EnumValueDescriptorProto
-	ServiceDescriptorProto
-	MethodDescriptorProto
-	FileOptions
-	MessageOptions
-	FieldOptions
-	EnumOptions
-	EnumValueOptions
-	ServiceOptions
-	MethodOptions
-	UninterpretedOption
-	SourceCodeInfo
-*/
 package google_protobuf
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type FieldDescriptorProto_Type int32
@@ -115,6 +92,9 @@ func (x FieldDescriptorProto_Type) Enum() *FieldDescriptorProto_Type {
 func (x FieldDescriptorProto_Type) String() string {
 	return proto.EnumName(FieldDescriptorProto_Type_name, int32(x))
 }
+func (x FieldDescriptorProto_Type) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *FieldDescriptorProto_Type) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(FieldDescriptorProto_Type_value, data, "FieldDescriptorProto_Type")
 	if err != nil {
@@ -151,6 +131,9 @@ func (x FieldDescriptorProto_Label) Enum() *FieldDescriptorProto_Label {
 }
 func (x FieldDescriptorProto_Label) String() string {
 	return proto.EnumName(FieldDescriptorProto_Label_name, int32(x))
+}
+func (x FieldDescriptorProto_Label) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *FieldDescriptorProto_Label) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(FieldDescriptorProto_Label_value, data, "FieldDescriptorProto_Label")
@@ -190,6 +173,9 @@ func (x FileOptions_OptimizeMode) Enum() *FileOptions_OptimizeMode {
 func (x FileOptions_OptimizeMode) String() string {
 	return proto.EnumName(FileOptions_OptimizeMode_name, int32(x))
 }
+func (x FileOptions_OptimizeMode) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *FileOptions_OptimizeMode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(FileOptions_OptimizeMode_value, data, "FileOptions_OptimizeMode")
 	if err != nil {
@@ -226,6 +212,9 @@ func (x FieldOptions_CType) Enum() *FieldOptions_CType {
 }
 func (x FieldOptions_CType) String() string {
 	return proto.EnumName(FieldOptions_CType_name, int32(x))
+}
+func (x FieldOptions_CType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *FieldOptions_CType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(FieldOptions_CType_value, data, "FieldOptions_CType")
@@ -479,14 +468,14 @@ func (m *FieldDescriptorProto) GetLabel() FieldDescriptorProto_Label {
 	if m != nil && m.Label != nil {
 		return *m.Label
 	}
-	return FieldDescriptorProto_LABEL_OPTIONAL
+	return 0
 }
 
 func (m *FieldDescriptorProto) GetType() FieldDescriptorProto_Type {
 	if m != nil && m.Type != nil {
 		return *m.Type
 	}
-	return FieldDescriptorProto_TYPE_DOUBLE
+	return 0
 }
 
 func (m *FieldDescriptorProto) GetTypeName() string {

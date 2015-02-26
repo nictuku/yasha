@@ -4,12 +4,14 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 import google_protobuf "github.com/dotabuff/yasha/dota/google/protobuf"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type ENetworkDisconnectionReason int32
@@ -191,6 +193,9 @@ func (x ENetworkDisconnectionReason) Enum() *ENetworkDisconnectionReason {
 }
 func (x ENetworkDisconnectionReason) String() string {
 	return proto.EnumName(ENetworkDisconnectionReason_name, int32(x))
+}
+func (x ENetworkDisconnectionReason) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *ENetworkDisconnectionReason) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ENetworkDisconnectionReason_value, data, "ENetworkDisconnectionReason")

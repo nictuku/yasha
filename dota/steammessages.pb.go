@@ -4,12 +4,14 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 import google_protobuf "github.com/dotabuff/yasha/dota/google/protobuf"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type GCProtoBufMsgSrc int32
@@ -44,6 +46,9 @@ func (x GCProtoBufMsgSrc) Enum() *GCProtoBufMsgSrc {
 }
 func (x GCProtoBufMsgSrc) String() string {
 	return proto.EnumName(GCProtoBufMsgSrc_name, int32(x))
+}
+func (x GCProtoBufMsgSrc) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *GCProtoBufMsgSrc) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(GCProtoBufMsgSrc_value, data, "GCProtoBufMsgSrc")
@@ -87,6 +92,9 @@ func (x CMsgGCRoutingInfo_RoutingMethod) Enum() *CMsgGCRoutingInfo_RoutingMethod
 func (x CMsgGCRoutingInfo_RoutingMethod) String() string {
 	return proto.EnumName(CMsgGCRoutingInfo_RoutingMethod_name, int32(x))
 }
+func (x CMsgGCRoutingInfo_RoutingMethod) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *CMsgGCRoutingInfo_RoutingMethod) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgGCRoutingInfo_RoutingMethod_value, data, "CMsgGCRoutingInfo_RoutingMethod")
 	if err != nil {
@@ -126,6 +134,9 @@ func (x CMsgGCMsgSetOptions_Option) Enum() *CMsgGCMsgSetOptions_Option {
 func (x CMsgGCMsgSetOptions_Option) String() string {
 	return proto.EnumName(CMsgGCMsgSetOptions_Option_name, int32(x))
 }
+func (x CMsgGCMsgSetOptions_Option) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *CMsgGCMsgSetOptions_Option) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgGCMsgSetOptions_Option_value, data, "CMsgGCMsgSetOptions_Option")
 	if err != nil {
@@ -158,6 +169,9 @@ func (x CMsgGCMsgSetOptions_GCSQLVersion) Enum() *CMsgGCMsgSetOptions_GCSQLVersi
 }
 func (x CMsgGCMsgSetOptions_GCSQLVersion) String() string {
 	return proto.EnumName(CMsgGCMsgSetOptions_GCSQLVersion_name, int32(x))
+}
+func (x CMsgGCMsgSetOptions_GCSQLVersion) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CMsgGCMsgSetOptions_GCSQLVersion) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgGCMsgSetOptions_GCSQLVersion_value, data, "CMsgGCMsgSetOptions_GCSQLVersion")
@@ -212,6 +226,9 @@ func (x CMsgDPPartnerMicroTxnsResponse_EErrorCode) Enum() *CMsgDPPartnerMicroTxn
 }
 func (x CMsgDPPartnerMicroTxnsResponse_EErrorCode) String() string {
 	return proto.EnumName(CMsgDPPartnerMicroTxnsResponse_EErrorCode_name, int32(x))
+}
+func (x CMsgDPPartnerMicroTxnsResponse_EErrorCode) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CMsgDPPartnerMicroTxnsResponse_EErrorCode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgDPPartnerMicroTxnsResponse_EErrorCode_value, data, "CMsgDPPartnerMicroTxnsResponse_EErrorCode")

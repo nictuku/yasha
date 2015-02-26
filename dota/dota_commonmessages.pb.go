@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type EDOTAChatWheelMessage int32
@@ -287,6 +289,9 @@ func (x EDOTAChatWheelMessage) Enum() *EDOTAChatWheelMessage {
 func (x EDOTAChatWheelMessage) String() string {
 	return proto.EnumName(EDOTAChatWheelMessage_name, int32(x))
 }
+func (x EDOTAChatWheelMessage) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EDOTAChatWheelMessage) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EDOTAChatWheelMessage_value, data, "EDOTAChatWheelMessage")
 	if err != nil {
@@ -325,6 +330,9 @@ func (x EDOTAStatPopupTypes) Enum() *EDOTAStatPopupTypes {
 }
 func (x EDOTAStatPopupTypes) String() string {
 	return proto.EnumName(EDOTAStatPopupTypes_name, int32(x))
+}
+func (x EDOTAStatPopupTypes) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EDOTAStatPopupTypes) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EDOTAStatPopupTypes_value, data, "EDOTAStatPopupTypes")
@@ -439,6 +447,9 @@ func (x DotaunitorderT) Enum() *DotaunitorderT {
 }
 func (x DotaunitorderT) String() string {
 	return proto.EnumName(DotaunitorderT_name, int32(x))
+}
+func (x DotaunitorderT) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DotaunitorderT) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DotaunitorderT_value, data, "DotaunitorderT")

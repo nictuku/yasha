@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type EDOTAGCMsg int32
@@ -519,6 +521,8 @@ const (
 	EDOTAGCMsg_k_EMsgGCToGCCustomGamePlayed                               EDOTAGCMsg = 7576
 	EDOTAGCMsg_k_EMsgGCToGCGrantEventPointsToUser                         EDOTAGCMsg = 7577
 	EDOTAGCMsg_k_EMsgGCToGCSetEventMMPanicFlushTime                       EDOTAGCMsg = 7578
+	EDOTAGCMsg_k_EMsgGameserverCrashReport                                EDOTAGCMsg = 7579
+	EDOTAGCMsg_k_EMsgGameserverCrashReportResponse                        EDOTAGCMsg = 7580
 	EDOTAGCMsg_k_EMsgGCDev_GrantWarKill                                   EDOTAGCMsg = 8001
 	EDOTAGCMsg_k_EMsgClientToGCCreateTeamShowcase                         EDOTAGCMsg = 8002
 	EDOTAGCMsg_k_EMsgGCToClientTeamShowcaseCreateResult                   EDOTAGCMsg = 8003
@@ -1032,6 +1036,8 @@ var EDOTAGCMsg_name = map[int32]string{
 	7576: "k_EMsgGCToGCCustomGamePlayed",
 	7577: "k_EMsgGCToGCGrantEventPointsToUser",
 	7578: "k_EMsgGCToGCSetEventMMPanicFlushTime",
+	7579: "k_EMsgGameserverCrashReport",
+	7580: "k_EMsgGameserverCrashReportResponse",
 	8001: "k_EMsgGCDev_GrantWarKill",
 	8002: "k_EMsgClientToGCCreateTeamShowcase",
 	8003: "k_EMsgGCToClientTeamShowcaseCreateResult",
@@ -1544,6 +1550,8 @@ var EDOTAGCMsg_value = map[string]int32{
 	"k_EMsgGCToGCCustomGamePlayed":                               7576,
 	"k_EMsgGCToGCGrantEventPointsToUser":                         7577,
 	"k_EMsgGCToGCSetEventMMPanicFlushTime":                       7578,
+	"k_EMsgGameserverCrashReport":                                7579,
+	"k_EMsgGameserverCrashReportResponse":                        7580,
 	"k_EMsgGCDev_GrantWarKill":                                   8001,
 	"k_EMsgClientToGCCreateTeamShowcase":                         8002,
 	"k_EMsgGCToClientTeamShowcaseCreateResult":                   8003,
@@ -1558,6 +1566,9 @@ func (x EDOTAGCMsg) Enum() *EDOTAGCMsg {
 }
 func (x EDOTAGCMsg) String() string {
 	return proto.EnumName(EDOTAGCMsg_name, int32(x))
+}
+func (x EDOTAGCMsg) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EDOTAGCMsg) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EDOTAGCMsg_value, data, "EDOTAGCMsg")
@@ -1655,6 +1666,9 @@ func (x DOTA_GameMode) Enum() *DOTA_GameMode {
 func (x DOTA_GameMode) String() string {
 	return proto.EnumName(DOTA_GameMode_name, int32(x))
 }
+func (x DOTA_GameMode) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTA_GameMode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_GameMode_value, data, "DOTA_GameMode")
 	if err != nil {
@@ -1712,6 +1726,9 @@ func (x DOTA_GameState) Enum() *DOTA_GameState {
 func (x DOTA_GameState) String() string {
 	return proto.EnumName(DOTA_GameState_name, int32(x))
 }
+func (x DOTA_GameState) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTA_GameState) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_GameState_value, data, "DOTA_GameState")
 	if err != nil {
@@ -1757,6 +1774,9 @@ func (x DOTA_GC_TEAM) Enum() *DOTA_GC_TEAM {
 func (x DOTA_GC_TEAM) String() string {
 	return proto.EnumName(DOTA_GC_TEAM_name, int32(x))
 }
+func (x DOTA_GC_TEAM) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTA_GC_TEAM) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_GC_TEAM_value, data, "DOTA_GC_TEAM")
 	if err != nil {
@@ -1792,6 +1812,9 @@ func (x DOTA_CM_PICK) Enum() *DOTA_CM_PICK {
 }
 func (x DOTA_CM_PICK) String() string {
 	return proto.EnumName(DOTA_CM_PICK_name, int32(x))
+}
+func (x DOTA_CM_PICK) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DOTA_CM_PICK) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_CM_PICK_value, data, "DOTA_CM_PICK")
@@ -1840,6 +1863,9 @@ func (x DOTAConnectionStateT) Enum() *DOTAConnectionStateT {
 }
 func (x DOTAConnectionStateT) String() string {
 	return proto.EnumName(DOTAConnectionStateT_name, int32(x))
+}
+func (x DOTAConnectionStateT) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DOTAConnectionStateT) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTAConnectionStateT_value, data, "DOTAConnectionStateT")
@@ -1895,6 +1921,9 @@ func (x DOTALeaverStatusT) Enum() *DOTALeaverStatusT {
 func (x DOTALeaverStatusT) String() string {
 	return proto.EnumName(DOTALeaverStatusT_name, int32(x))
 }
+func (x DOTALeaverStatusT) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTALeaverStatusT) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTALeaverStatusT_value, data, "DOTALeaverStatusT")
 	if err != nil {
@@ -1930,6 +1959,9 @@ func (x DOTALowPriorityBanType) Enum() *DOTALowPriorityBanType {
 }
 func (x DOTALowPriorityBanType) String() string {
 	return proto.EnumName(DOTALowPriorityBanType_name, int32(x))
+}
+func (x DOTALowPriorityBanType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DOTALowPriorityBanType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTALowPriorityBanType_value, data, "DOTALowPriorityBanType")
@@ -1967,6 +1999,9 @@ func (x DOTALobbyReadyState) Enum() *DOTALobbyReadyState {
 func (x DOTALobbyReadyState) String() string {
 	return proto.EnumName(DOTALobbyReadyState_name, int32(x))
 }
+func (x DOTALobbyReadyState) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTALobbyReadyState) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTALobbyReadyState_value, data, "DOTALobbyReadyState")
 	if err != nil {
@@ -1999,6 +2034,9 @@ func (x DOTAGameVersion) Enum() *DOTAGameVersion {
 }
 func (x DOTAGameVersion) String() string {
 	return proto.EnumName(DOTAGameVersion_name, int32(x))
+}
+func (x DOTAGameVersion) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DOTAGameVersion) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTAGameVersion_value, data, "DOTAGameVersion")
@@ -2057,6 +2095,9 @@ func (x DOTAJoinLobbyResult) Enum() *DOTAJoinLobbyResult {
 func (x DOTAJoinLobbyResult) String() string {
 	return proto.EnumName(DOTAJoinLobbyResult_name, int32(x))
 }
+func (x DOTAJoinLobbyResult) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTAJoinLobbyResult) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTAJoinLobbyResult_value, data, "DOTAJoinLobbyResult")
 	if err != nil {
@@ -2092,6 +2133,9 @@ func (x DOTAMatchVote) Enum() *DOTAMatchVote {
 }
 func (x DOTAMatchVote) String() string {
 	return proto.EnumName(DOTAMatchVote_name, int32(x))
+}
+func (x DOTAMatchVote) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DOTAMatchVote) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTAMatchVote_value, data, "DOTAMatchVote")
@@ -2138,6 +2182,9 @@ func (x DOTA_LobbyMemberXPBonus) Enum() *DOTA_LobbyMemberXPBonus {
 func (x DOTA_LobbyMemberXPBonus) String() string {
 	return proto.EnumName(DOTA_LobbyMemberXPBonus_name, int32(x))
 }
+func (x DOTA_LobbyMemberXPBonus) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTA_LobbyMemberXPBonus) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_LobbyMemberXPBonus_value, data, "DOTA_LobbyMemberXPBonus")
 	if err != nil {
@@ -2182,6 +2229,9 @@ func (x EDOTAPlayerMMRType) Enum() *EDOTAPlayerMMRType {
 }
 func (x EDOTAPlayerMMRType) String() string {
 	return proto.EnumName(EDOTAPlayerMMRType_name, int32(x))
+}
+func (x EDOTAPlayerMMRType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EDOTAPlayerMMRType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EDOTAPlayerMMRType_value, data, "EDOTAPlayerMMRType")
@@ -2233,6 +2283,9 @@ func (x MatchType) Enum() *MatchType {
 }
 func (x MatchType) String() string {
 	return proto.EnumName(MatchType_name, int32(x))
+}
+func (x MatchType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *MatchType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(MatchType_value, data, "MatchType")
@@ -2288,6 +2341,9 @@ func (x DOTABotDifficulty) Enum() *DOTABotDifficulty {
 func (x DOTABotDifficulty) String() string {
 	return proto.EnumName(DOTABotDifficulty_name, int32(x))
 }
+func (x DOTABotDifficulty) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTABotDifficulty) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTABotDifficulty_value, data, "DOTABotDifficulty")
 	if err != nil {
@@ -2339,6 +2395,9 @@ func (x MatchLanguages) Enum() *MatchLanguages {
 func (x MatchLanguages) String() string {
 	return proto.EnumName(MatchLanguages_name, int32(x))
 }
+func (x MatchLanguages) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *MatchLanguages) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(MatchLanguages_value, data, "MatchLanguages")
 	if err != nil {
@@ -2372,6 +2431,9 @@ func (x ETournamentTemplate) Enum() *ETournamentTemplate {
 func (x ETournamentTemplate) String() string {
 	return proto.EnumName(ETournamentTemplate_name, int32(x))
 }
+func (x ETournamentTemplate) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *ETournamentTemplate) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ETournamentTemplate_value, data, "ETournamentTemplate")
 	if err != nil {
@@ -2404,6 +2466,9 @@ func (x ETournamentType) Enum() *ETournamentType {
 }
 func (x ETournamentType) String() string {
 	return proto.EnumName(ETournamentType_name, int32(x))
+}
+func (x ETournamentType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *ETournamentType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ETournamentType_value, data, "ETournamentType")
@@ -2441,6 +2506,9 @@ func (x EIngameEvent) Enum() *EIngameEvent {
 func (x EIngameEvent) String() string {
 	return proto.EnumName(EIngameEvent_name, int32(x))
 }
+func (x EIngameEvent) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EIngameEvent) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EIngameEvent_value, data, "EIngameEvent")
 	if err != nil {
@@ -2476,6 +2544,9 @@ func (x LobbyDotaTVDelay) Enum() *LobbyDotaTVDelay {
 }
 func (x LobbyDotaTVDelay) String() string {
 	return proto.EnumName(LobbyDotaTVDelay_name, int32(x))
+}
+func (x LobbyDotaTVDelay) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *LobbyDotaTVDelay) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(LobbyDotaTVDelay_value, data, "LobbyDotaTVDelay")
@@ -2524,6 +2595,9 @@ func (x EMatchOutcome) Enum() *EMatchOutcome {
 }
 func (x EMatchOutcome) String() string {
 	return proto.EnumName(EMatchOutcome_name, int32(x))
+}
+func (x EMatchOutcome) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EMatchOutcome) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EMatchOutcome_value, data, "EMatchOutcome")
@@ -2588,6 +2662,9 @@ func (x EDOTAGCSessionNeed) Enum() *EDOTAGCSessionNeed {
 func (x EDOTAGCSessionNeed) String() string {
 	return proto.EnumName(EDOTAGCSessionNeed_name, int32(x))
 }
+func (x EDOTAGCSessionNeed) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EDOTAGCSessionNeed) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EDOTAGCSessionNeed_value, data, "EDOTAGCSessionNeed")
 	if err != nil {
@@ -2623,6 +2700,9 @@ func (x Fantasy_Roles) Enum() *Fantasy_Roles {
 }
 func (x Fantasy_Roles) String() string {
 	return proto.EnumName(Fantasy_Roles_name, int32(x))
+}
+func (x Fantasy_Roles) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *Fantasy_Roles) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(Fantasy_Roles_value, data, "Fantasy_Roles")
@@ -2665,6 +2745,9 @@ func (x Fantasy_Team_Slots) Enum() *Fantasy_Team_Slots {
 }
 func (x Fantasy_Team_Slots) String() string {
 	return proto.EnumName(Fantasy_Team_Slots_name, int32(x))
+}
+func (x Fantasy_Team_Slots) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *Fantasy_Team_Slots) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(Fantasy_Team_Slots_value, data, "Fantasy_Team_Slots")
@@ -2719,6 +2802,9 @@ func (x Fantasy_Selection_Mode) Enum() *Fantasy_Selection_Mode {
 }
 func (x Fantasy_Selection_Mode) String() string {
 	return proto.EnumName(Fantasy_Selection_Mode_name, int32(x))
+}
+func (x Fantasy_Selection_Mode) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *Fantasy_Selection_Mode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(Fantasy_Selection_Mode_value, data, "Fantasy_Selection_Mode")
@@ -2779,6 +2865,9 @@ func (x DOTA_TournamentEvents) Enum() *DOTA_TournamentEvents {
 }
 func (x DOTA_TournamentEvents) String() string {
 	return proto.EnumName(DOTA_TournamentEvents_name, int32(x))
+}
+func (x DOTA_TournamentEvents) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DOTA_TournamentEvents) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_TournamentEvents_value, data, "DOTA_TournamentEvents")
@@ -2849,6 +2938,9 @@ func (x DOTA_COMBATLOG_TYPES) Enum() *DOTA_COMBATLOG_TYPES {
 func (x DOTA_COMBATLOG_TYPES) String() string {
 	return proto.EnumName(DOTA_COMBATLOG_TYPES_name, int32(x))
 }
+func (x DOTA_COMBATLOG_TYPES) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *DOTA_COMBATLOG_TYPES) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_COMBATLOG_TYPES_value, data, "DOTA_COMBATLOG_TYPES")
 	if err != nil {
@@ -2884,6 +2976,9 @@ func (x CSODOTAParty_State) Enum() *CSODOTAParty_State {
 }
 func (x CSODOTAParty_State) String() string {
 	return proto.EnumName(CSODOTAParty_State_name, int32(x))
+}
+func (x CSODOTAParty_State) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CSODOTAParty_State) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CSODOTAParty_State_value, data, "CSODOTAParty_State")
@@ -2932,6 +3027,9 @@ func (x CSODOTALobby_State) Enum() *CSODOTALobby_State {
 }
 func (x CSODOTALobby_State) String() string {
 	return proto.EnumName(CSODOTALobby_State_name, int32(x))
+}
+func (x CSODOTALobby_State) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CSODOTALobby_State) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CSODOTALobby_State_value, data, "CSODOTALobby_State")
@@ -2993,6 +3091,9 @@ func (x CSODOTALobby_LobbyType) Enum() *CSODOTALobby_LobbyType {
 func (x CSODOTALobby_LobbyType) String() string {
 	return proto.EnumName(CSODOTALobby_LobbyType_name, int32(x))
 }
+func (x CSODOTALobby_LobbyType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *CSODOTALobby_LobbyType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CSODOTALobby_LobbyType_value, data, "CSODOTALobby_LobbyType")
 	if err != nil {
@@ -3034,6 +3135,9 @@ func (x CMsgPerfectWorldUserLookupResponse_EResultCode) Enum() *CMsgPerfectWorld
 }
 func (x CMsgPerfectWorldUserLookupResponse_EResultCode) String() string {
 	return proto.EnumName(CMsgPerfectWorldUserLookupResponse_EResultCode_name, int32(x))
+}
+func (x CMsgPerfectWorldUserLookupResponse_EResultCode) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CMsgPerfectWorldUserLookupResponse_EResultCode) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgPerfectWorldUserLookupResponse_EResultCode_value, data, "CMsgPerfectWorldUserLookupResponse_EResultCode")
@@ -3082,6 +3186,9 @@ func (x CMsgDOTAProfileCard_EStatID) Enum() *CMsgDOTAProfileCard_EStatID {
 }
 func (x CMsgDOTAProfileCard_EStatID) String() string {
 	return proto.EnumName(CMsgDOTAProfileCard_EStatID_name, int32(x))
+}
+func (x CMsgDOTAProfileCard_EStatID) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CMsgDOTAProfileCard_EStatID) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgDOTAProfileCard_EStatID_value, data, "CMsgDOTAProfileCard_EStatID")

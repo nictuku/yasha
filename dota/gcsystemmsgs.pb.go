@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type EGCSystemMsg int32
@@ -287,6 +289,9 @@ func (x EGCSystemMsg) Enum() *EGCSystemMsg {
 func (x EGCSystemMsg) String() string {
 	return proto.EnumName(EGCSystemMsg_name, int32(x))
 }
+func (x EGCSystemMsg) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EGCSystemMsg) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCSystemMsg_value, data, "EGCSystemMsg")
 	if err != nil {
@@ -338,6 +343,9 @@ func (x ESOMsg) Enum() *ESOMsg {
 func (x ESOMsg) String() string {
 	return proto.EnumName(ESOMsg_name, int32(x))
 }
+func (x ESOMsg) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *ESOMsg) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ESOMsg_value, data, "ESOMsg")
 	if err != nil {
@@ -388,6 +396,9 @@ func (x EGCBaseClientMsg) Enum() *EGCBaseClientMsg {
 }
 func (x EGCBaseClientMsg) String() string {
 	return proto.EnumName(EGCBaseClientMsg_name, int32(x))
+}
+func (x EGCBaseClientMsg) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EGCBaseClientMsg) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCBaseClientMsg_value, data, "EGCBaseClientMsg")
@@ -454,6 +465,9 @@ func (x EGCToGCMsg) Enum() *EGCToGCMsg {
 }
 func (x EGCToGCMsg) String() string {
 	return proto.EnumName(EGCToGCMsg_name, int32(x))
+}
+func (x EGCToGCMsg) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EGCToGCMsg) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCToGCMsg_value, data, "EGCToGCMsg")

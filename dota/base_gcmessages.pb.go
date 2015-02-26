@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type EGCBaseMsg int32
@@ -71,6 +73,9 @@ func (x EGCBaseMsg) Enum() *EGCBaseMsg {
 func (x EGCBaseMsg) String() string {
 	return proto.EnumName(EGCBaseMsg_name, int32(x))
 }
+func (x EGCBaseMsg) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EGCBaseMsg) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCBaseMsg_value, data, "EGCBaseMsg")
 	if err != nil {
@@ -104,6 +109,9 @@ func (x EGCBaseProtoObjectTypes) Enum() *EGCBaseProtoObjectTypes {
 func (x EGCBaseProtoObjectTypes) String() string {
 	return proto.EnumName(EGCBaseProtoObjectTypes_name, int32(x))
 }
+func (x EGCBaseProtoObjectTypes) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EGCBaseProtoObjectTypes) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCBaseProtoObjectTypes_value, data, "EGCBaseProtoObjectTypes")
 	if err != nil {
@@ -136,6 +144,9 @@ func (x GC_BannedWordType) Enum() *GC_BannedWordType {
 }
 func (x GC_BannedWordType) String() string {
 	return proto.EnumName(GC_BannedWordType_name, int32(x))
+}
+func (x GC_BannedWordType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *GC_BannedWordType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(GC_BannedWordType_value, data, "GC_BannedWordType")

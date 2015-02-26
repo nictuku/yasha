@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type EGCItemMsg int32
@@ -515,6 +517,9 @@ func (x EGCItemMsg) Enum() *EGCItemMsg {
 func (x EGCItemMsg) String() string {
 	return proto.EnumName(EGCItemMsg_name, int32(x))
 }
+func (x EGCItemMsg) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EGCItemMsg) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCItemMsg_value, data, "EGCItemMsg")
 	if err != nil {
@@ -568,6 +573,9 @@ func (x EGCMsgResponse) Enum() *EGCMsgResponse {
 }
 func (x EGCMsgResponse) String() string {
 	return proto.EnumName(EGCMsgResponse_name, int32(x))
+}
+func (x EGCMsgResponse) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EGCMsgResponse) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCMsgResponse_value, data, "EGCMsgResponse")
@@ -623,6 +631,9 @@ func (x EUnlockStyle) Enum() *EUnlockStyle {
 func (x EUnlockStyle) String() string {
 	return proto.EnumName(EUnlockStyle_name, int32(x))
 }
+func (x EUnlockStyle) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EUnlockStyle) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EUnlockStyle_value, data, "EUnlockStyle")
 	if err != nil {
@@ -667,6 +678,9 @@ func (x EItemPurgatoryResponse_Finalize) Enum() *EItemPurgatoryResponse_Finalize
 }
 func (x EItemPurgatoryResponse_Finalize) String() string {
 	return proto.EnumName(EItemPurgatoryResponse_Finalize_name, int32(x))
+}
+func (x EItemPurgatoryResponse_Finalize) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EItemPurgatoryResponse_Finalize) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EItemPurgatoryResponse_Finalize_value, data, "EItemPurgatoryResponse_Finalize")
@@ -713,6 +727,9 @@ func (x EItemPurgatoryResponse_Refund) Enum() *EItemPurgatoryResponse_Refund {
 func (x EItemPurgatoryResponse_Refund) String() string {
 	return proto.EnumName(EItemPurgatoryResponse_Refund_name, int32(x))
 }
+func (x EItemPurgatoryResponse_Refund) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EItemPurgatoryResponse_Refund) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EItemPurgatoryResponse_Refund_value, data, "EItemPurgatoryResponse_Refund")
 	if err != nil {
@@ -751,6 +768,9 @@ func (x EGCPartnerRequestResponse) Enum() *EGCPartnerRequestResponse {
 }
 func (x EGCPartnerRequestResponse) String() string {
 	return proto.EnumName(EGCPartnerRequestResponse_name, int32(x))
+}
+func (x EGCPartnerRequestResponse) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EGCPartnerRequestResponse) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EGCPartnerRequestResponse_value, data, "EGCPartnerRequestResponse")

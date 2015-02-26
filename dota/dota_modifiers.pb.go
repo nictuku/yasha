@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type DOTA_MODIFIER_ENTRY_TYPE int32
@@ -34,6 +36,9 @@ func (x DOTA_MODIFIER_ENTRY_TYPE) Enum() *DOTA_MODIFIER_ENTRY_TYPE {
 }
 func (x DOTA_MODIFIER_ENTRY_TYPE) String() string {
 	return proto.EnumName(DOTA_MODIFIER_ENTRY_TYPE_name, int32(x))
+}
+func (x DOTA_MODIFIER_ENTRY_TYPE) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *DOTA_MODIFIER_ENTRY_TYPE) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(DOTA_MODIFIER_ENTRY_TYPE_value, data, "DOTA_MODIFIER_ENTRY_TYPE")

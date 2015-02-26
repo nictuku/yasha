@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type EDemoCommands int32
@@ -82,6 +84,9 @@ func (x EDemoCommands) Enum() *EDemoCommands {
 }
 func (x EDemoCommands) String() string {
 	return proto.EnumName(EDemoCommands_name, int32(x))
+}
+func (x EDemoCommands) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EDemoCommands) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EDemoCommands_value, data, "EDemoCommands")

@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type SIGNONSTATE int32
@@ -52,6 +54,9 @@ func (x SIGNONSTATE) Enum() *SIGNONSTATE {
 }
 func (x SIGNONSTATE) String() string {
 	return proto.EnumName(SIGNONSTATE_name, int32(x))
+}
+func (x SIGNONSTATE) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *SIGNONSTATE) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SIGNONSTATE_value, data, "SIGNONSTATE")
@@ -103,6 +108,9 @@ func (x NET_Messages) Enum() *NET_Messages {
 }
 func (x NET_Messages) String() string {
 	return proto.EnumName(NET_Messages_name, int32(x))
+}
+func (x NET_Messages) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *NET_Messages) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(NET_Messages_value, data, "NET_Messages")

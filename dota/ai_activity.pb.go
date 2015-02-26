@@ -2,42 +2,15 @@
 // source: ai_activity.proto
 // DO NOT EDIT!
 
-/*
-Package dota is a generated protocol buffer package.
-
-It is generated from these files:
-	ai_activity.proto
-	base_gcmessages.proto
-	demo.proto
-	dota_broadcastmessages.proto
-	dota_clientmessages.proto
-	dota_commonmessages.proto
-	dota_gcmessages_client.proto
-	dota_gcmessages_client_fantasy.proto
-	dota_gcmessages_common.proto
-	dota_gcmessages_server.proto
-	dota_modifiers.proto
-	dota_usermessages.proto
-	econ_gcmessages.proto
-	gcsdk_gcmessages.proto
-	gcsystemmsgs.proto
-	netmessages.proto
-	network_connection.proto
-	networkbasetypes.proto
-	steammessages.proto
-	steammessages_cloud.steamworkssdk.proto
-	steammessages_unified_base.steamworkssdk.proto
-	usermessages.proto
-
-It has these top-level messages:
-*/
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type Activity int32
@@ -1890,6 +1863,9 @@ func (x Activity) Enum() *Activity {
 }
 func (x Activity) String() string {
 	return proto.EnumName(Activity_name, int32(x))
+}
+func (x Activity) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *Activity) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(Activity_value, data, "Activity")

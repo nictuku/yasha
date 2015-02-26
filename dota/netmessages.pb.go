@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type CLC_Messages int32
@@ -58,6 +60,9 @@ func (x CLC_Messages) Enum() *CLC_Messages {
 }
 func (x CLC_Messages) String() string {
 	return proto.EnumName(CLC_Messages_name, int32(x))
+}
+func (x CLC_Messages) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CLC_Messages) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CLC_Messages_value, data, "CLC_Messages")
@@ -164,6 +169,9 @@ func (x SVC_Messages) Enum() *SVC_Messages {
 func (x SVC_Messages) String() string {
 	return proto.EnumName(SVC_Messages_name, int32(x))
 }
+func (x SVC_Messages) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *SVC_Messages) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(SVC_Messages_value, data, "SVC_Messages")
 	if err != nil {
@@ -197,6 +205,9 @@ func (x VoiceDataFormatT) Enum() *VoiceDataFormatT {
 func (x VoiceDataFormatT) String() string {
 	return proto.EnumName(VoiceDataFormatT_name, int32(x))
 }
+func (x VoiceDataFormatT) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *VoiceDataFormatT) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(VoiceDataFormatT_value, data, "VoiceDataFormatT")
 	if err != nil {
@@ -229,6 +240,9 @@ func (x ESplitScreenMessageType) Enum() *ESplitScreenMessageType {
 }
 func (x ESplitScreenMessageType) String() string {
 	return proto.EnumName(ESplitScreenMessageType_name, int32(x))
+}
+func (x ESplitScreenMessageType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *ESplitScreenMessageType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ESplitScreenMessageType_value, data, "ESplitScreenMessageType")

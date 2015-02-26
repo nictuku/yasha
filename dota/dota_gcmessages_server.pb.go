@@ -4,11 +4,13 @@
 
 package dota
 
-import proto "github.com/golang/protobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
+import json "encoding/json"
 import math "math"
 
-// Reference imports to suppress errors if they are not otherwise used.
+// Reference proto, json, and math imports to suppress error if they are not otherwise used.
 var _ = proto.Marshal
+var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type EPoorNetworkConditionsType int32
@@ -40,6 +42,9 @@ func (x EPoorNetworkConditionsType) Enum() *EPoorNetworkConditionsType {
 }
 func (x EPoorNetworkConditionsType) String() string {
 	return proto.EnumName(EPoorNetworkConditionsType_name, int32(x))
+}
+func (x EPoorNetworkConditionsType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EPoorNetworkConditionsType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EPoorNetworkConditionsType_value, data, "EPoorNetworkConditionsType")
@@ -88,6 +93,9 @@ func (x EAbilityAbuseType) Enum() *EAbilityAbuseType {
 }
 func (x EAbilityAbuseType) String() string {
 	return proto.EnumName(EAbilityAbuseType_name, int32(x))
+}
+func (x EAbilityAbuseType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *EAbilityAbuseType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EAbilityAbuseType_value, data, "EAbilityAbuseType")
@@ -146,6 +154,9 @@ func (x EIntentionalFeedingType) Enum() *EIntentionalFeedingType {
 func (x EIntentionalFeedingType) String() string {
 	return proto.EnumName(EIntentionalFeedingType_name, int32(x))
 }
+func (x EIntentionalFeedingType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *EIntentionalFeedingType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(EIntentionalFeedingType_value, data, "EIntentionalFeedingType")
 	if err != nil {
@@ -181,6 +192,9 @@ func (x ESuspiciousActivity) Enum() *ESuspiciousActivity {
 }
 func (x ESuspiciousActivity) String() string {
 	return proto.EnumName(ESuspiciousActivity_name, int32(x))
+}
+func (x ESuspiciousActivity) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *ESuspiciousActivity) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ESuspiciousActivity_value, data, "ESuspiciousActivity")
@@ -238,6 +252,9 @@ func (x ESuspiciousBuildType) Enum() *ESuspiciousBuildType {
 }
 func (x ESuspiciousBuildType) String() string {
 	return proto.EnumName(ESuspiciousBuildType_name, int32(x))
+}
+func (x ESuspiciousBuildType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *ESuspiciousBuildType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(ESuspiciousBuildType_value, data, "ESuspiciousBuildType")
@@ -299,6 +316,9 @@ func (x CMsgConnectedPlayers_SendReason) Enum() *CMsgConnectedPlayers_SendReason
 func (x CMsgConnectedPlayers_SendReason) String() string {
 	return proto.EnumName(CMsgConnectedPlayers_SendReason_name, int32(x))
 }
+func (x CMsgConnectedPlayers_SendReason) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *CMsgConnectedPlayers_SendReason) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgConnectedPlayers_SendReason_value, data, "CMsgConnectedPlayers_SendReason")
 	if err != nil {
@@ -334,6 +354,9 @@ func (x CMsgGameServerInfo_ServerType) Enum() *CMsgGameServerInfo_ServerType {
 }
 func (x CMsgGameServerInfo_ServerType) String() string {
 	return proto.EnumName(CMsgGameServerInfo_ServerType_name, int32(x))
+}
+func (x CMsgGameServerInfo_ServerType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CMsgGameServerInfo_ServerType) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgGameServerInfo_ServerType_value, data, "CMsgGameServerInfo_ServerType")
@@ -374,6 +397,9 @@ func (x CMsgDOTALiveScoreboardUpdate_Team_Player_DOTAUltimateState) Enum() *CMsg
 func (x CMsgDOTALiveScoreboardUpdate_Team_Player_DOTAUltimateState) String() string {
 	return proto.EnumName(CMsgDOTALiveScoreboardUpdate_Team_Player_DOTAUltimateState_name, int32(x))
 }
+func (x CMsgDOTALiveScoreboardUpdate_Team_Player_DOTAUltimateState) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *CMsgDOTALiveScoreboardUpdate_Team_Player_DOTAUltimateState) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgDOTALiveScoreboardUpdate_Team_Player_DOTAUltimateState_value, data, "CMsgDOTALiveScoreboardUpdate_Team_Player_DOTAUltimateState")
 	if err != nil {
@@ -413,6 +439,9 @@ func (x CMsgGameServerSaveGameResult_Result) Enum() *CMsgGameServerSaveGameResul
 func (x CMsgGameServerSaveGameResult_Result) String() string {
 	return proto.EnumName(CMsgGameServerSaveGameResult_Result_name, int32(x))
 }
+func (x CMsgGameServerSaveGameResult_Result) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
+}
 func (x *CMsgGameServerSaveGameResult_Result) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgGameServerSaveGameResult_Result_value, data, "CMsgGameServerSaveGameResult_Result")
 	if err != nil {
@@ -445,6 +474,9 @@ func (x CMsgGCToServerPredictionResult_Prediction_EResult) Enum() *CMsgGCToServe
 }
 func (x CMsgGCToServerPredictionResult_Prediction_EResult) String() string {
 	return proto.EnumName(CMsgGCToServerPredictionResult_Prediction_EResult_name, int32(x))
+}
+func (x CMsgGCToServerPredictionResult_Prediction_EResult) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }
 func (x *CMsgGCToServerPredictionResult_Prediction_EResult) UnmarshalJSON(data []byte) error {
 	value, err := proto.UnmarshalJSONEnum(CMsgGCToServerPredictionResult_Prediction_EResult_value, data, "CMsgGCToServerPredictionResult_Prediction_EResult")
@@ -567,6 +599,88 @@ func (m *CMsgPoorNetworkConditions_Player) GetNumBadIntervals() uint32 {
 func (m *CMsgPoorNetworkConditions_Player) GetPeakLossPct() uint32 {
 	if m != nil && m.PeakLossPct != nil {
 		return *m.PeakLossPct
+	}
+	return 0
+}
+
+type CMsgGameserverCrash struct {
+	MatchId            *uint64         `protobuf:"varint,1,opt,name=match_id" json:"match_id,omitempty"`
+	LobbyId            *uint64         `protobuf:"fixed64,2,opt,name=lobby_id" json:"lobby_id,omitempty"`
+	GameState          *DOTA_GameState `protobuf:"varint,3,opt,name=game_state,enum=dota.DOTA_GameState,def=0" json:"game_state,omitempty"`
+	SentinelSaveTime   *uint32         `protobuf:"fixed32,4,opt,name=sentinel_save_time" json:"sentinel_save_time,omitempty"`
+	ServerSteamId      *uint64         `protobuf:"fixed64,5,opt,name=server_steam_id" json:"server_steam_id,omitempty"`
+	ServerPublicIpAddr *uint32         `protobuf:"fixed32,6,opt,name=server_public_ip_addr" json:"server_public_ip_addr,omitempty"`
+	ServerPort         *uint32         `protobuf:"varint,7,opt,name=server_port" json:"server_port,omitempty"`
+	ServerCluster      *uint32         `protobuf:"varint,8,opt,name=server_cluster" json:"server_cluster,omitempty"`
+	Pid                *uint32         `protobuf:"varint,9,opt,name=pid" json:"pid,omitempty"`
+	XXX_unrecognized   []byte          `json:"-"`
+}
+
+func (m *CMsgGameserverCrash) Reset()         { *m = CMsgGameserverCrash{} }
+func (m *CMsgGameserverCrash) String() string { return proto.CompactTextString(m) }
+func (*CMsgGameserverCrash) ProtoMessage()    {}
+
+const Default_CMsgGameserverCrash_GameState DOTA_GameState = DOTA_GameState_DOTA_GAMERULES_STATE_INIT
+
+func (m *CMsgGameserverCrash) GetMatchId() uint64 {
+	if m != nil && m.MatchId != nil {
+		return *m.MatchId
+	}
+	return 0
+}
+
+func (m *CMsgGameserverCrash) GetLobbyId() uint64 {
+	if m != nil && m.LobbyId != nil {
+		return *m.LobbyId
+	}
+	return 0
+}
+
+func (m *CMsgGameserverCrash) GetGameState() DOTA_GameState {
+	if m != nil && m.GameState != nil {
+		return *m.GameState
+	}
+	return Default_CMsgGameserverCrash_GameState
+}
+
+func (m *CMsgGameserverCrash) GetSentinelSaveTime() uint32 {
+	if m != nil && m.SentinelSaveTime != nil {
+		return *m.SentinelSaveTime
+	}
+	return 0
+}
+
+func (m *CMsgGameserverCrash) GetServerSteamId() uint64 {
+	if m != nil && m.ServerSteamId != nil {
+		return *m.ServerSteamId
+	}
+	return 0
+}
+
+func (m *CMsgGameserverCrash) GetServerPublicIpAddr() uint32 {
+	if m != nil && m.ServerPublicIpAddr != nil {
+		return *m.ServerPublicIpAddr
+	}
+	return 0
+}
+
+func (m *CMsgGameserverCrash) GetServerPort() uint32 {
+	if m != nil && m.ServerPort != nil {
+		return *m.ServerPort
+	}
+	return 0
+}
+
+func (m *CMsgGameserverCrash) GetServerCluster() uint32 {
+	if m != nil && m.ServerCluster != nil {
+		return *m.ServerCluster
+	}
+	return 0
+}
+
+func (m *CMsgGameserverCrash) GetPid() uint32 {
+	if m != nil && m.Pid != nil {
+		return *m.Pid
 	}
 	return 0
 }
